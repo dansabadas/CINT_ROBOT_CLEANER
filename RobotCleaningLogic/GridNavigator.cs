@@ -54,14 +54,6 @@ namespace RobotCleaningLogic
                     break;
             }
 
-            if (x < -CoordinatesHardBoundary ||
-                x > CoordinatesHardBoundary ||
-                y < -CoordinatesHardBoundary ||
-                y > CoordinatesHardBoundary)
-            {
-                throw new InvalidOperationException($"Invalid coordinates: ({x},{y})");
-            }
-
             var newPoint = new Point2D(x, y);
             ValidateCoordinates(newPoint);
             _currentPoint = newPoint;

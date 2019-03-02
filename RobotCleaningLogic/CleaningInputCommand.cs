@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace RobotCleaningLogic
 {
@@ -7,7 +8,20 @@ namespace RobotCleaningLogic
     /// </summary>
     public class CleaningInputCommand
     {
-        public Point2D StartingCoordinate { get; private set; }
-        public List<NavigationDirections> Atomic { get; private set; }
+        /// <summary>
+        /// The coordinate where the robot starts the cleaning operation
+        /// </summary>
+        public Point2D StartingCoordinate { get; }
+
+        /// <summary>
+        /// Represents the atomic navigation steps (navigation between adjacent vertices)
+        /// </summary>
+        public ReadOnlyCollection<NavigationDirections> AtomicNavigationSteps { get; }
+
+        public CleaningInputCommand(Point2D startingCoordinate, List<NavigationDirections> atomicNavigationSteps)
+        {
+            StartingCoordinate = startingCoordinate;
+            AtomicNavigationSteps = atomicNavigationSteps.AsReadOnly();
+        }
     }
 }

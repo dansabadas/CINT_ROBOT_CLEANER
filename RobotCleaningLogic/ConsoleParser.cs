@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RobotCleaningLogic
 {
@@ -8,6 +9,11 @@ namespace RobotCleaningLogic
     /// </summary>
     public class ConsoleParser
     {
+        private const char East = 'E';
+        private const char West = 'W';
+        private const char South = 'S';
+        private const char North = 'N';
+
         public void ParseAllSteps()
         {
             int numberOfCommands = ParseNumberOfCommands();
@@ -31,15 +37,20 @@ namespace RobotCleaningLogic
         /// <returns></returns>
         private Point2D ParseStartingCoordinates()
         {
-            string[] tokens = Console.ReadLine().Split();
-            return new Point2D(int.Parse(tokens[0]), int.Parse(tokens[0]));
+            string[] commandTokens = Console.ReadLine().Split();
+            return new Point2D(int.Parse(commandTokens[0]), int.Parse(commandTokens[0]));
         }
-
+        /// <summary>
+        /// It parses the third step, the navigation directions
+        /// If stops after the given the number of commands to be taken into account (provided at step 1)
+        /// </summary>
+        /// <param name="numberOfCommands"></param>
         private void ParseNavigationDirections(int numberOfCommands)
         {
+            List<NavigationDirections> navigationDirections = new List<NavigationDirections>();
             while (numberOfCommands > 0)
             {
-
+                string[] commandTokens = Console.ReadLine().Split();
                 numberOfCommands -= 1;
             }
         }
