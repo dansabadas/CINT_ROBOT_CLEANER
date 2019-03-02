@@ -1,6 +1,6 @@
 ﻿namespace RobotCleaningLogic
 {
-    public interface IConsoleReaderWriter
+    public interface IStandardIOReaderWriter
     {
         string ReadLine();
 

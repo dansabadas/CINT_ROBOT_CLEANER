@@ -33,7 +33,7 @@ namespace RobotCleaningLogic
             _currentPoint = point;
         }
 
-        public void NavigateTo(NavigationDirections navigationDirection)
+        public Point2D NavigateTo(NavigationDirections navigationDirection)
         {
             int x = _currentPoint.X, 
                 y = _currentPoint.Y;
@@ -57,6 +57,8 @@ namespace RobotCleaningLogic
             var newPoint = new Point2D(x, y);
             ValidateCoordinates(newPoint);
             _currentPoint = newPoint;
+
+            return newPoint;
         }
 
         private void ValidateCoordinates(Point2D point)

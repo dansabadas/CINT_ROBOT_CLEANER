@@ -1,4 +1,6 @@
-﻿namespace RobotCleaningLogic
+﻿using System.Threading.Tasks;
+
+namespace RobotCleaningLogic
 {
     /// <summary>
     /// This robot cleaner is exposed as interface
@@ -11,6 +13,6 @@
         /// </summary>
         /// <param name="cleaningInputCommand"></param>
         /// <returns>Returns the number of unique places in the office that were cleaned</returns>
-        uint StartWithInput(CleaningInputCommand cleaningInputCommand);
+        Task<uint> StartWithInput(CleaningInputCommand cleaningInputCommand);
     }
 }

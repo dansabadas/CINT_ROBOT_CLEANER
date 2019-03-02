@@ -2,7 +2,7 @@
 
 namespace RobotCleaningLogic
 {
-    public class ConsoleReaderWriter : IConsoleReaderWriter
+    public class ConsoleReaderWriter : IStandardIOReaderWriter
     {
         public string ReadLine()
         {

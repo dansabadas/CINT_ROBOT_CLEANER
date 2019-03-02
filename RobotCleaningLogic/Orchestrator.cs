@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using System.Threading.Tasks;
 
 namespace RobotCleaningLogic
 {
@@ -19,10 +19,10 @@ namespace RobotCleaningLogic
 
         public static readonly Orchestrator Instance = new Orchestrator();
 
-        public void Clean()
+        public async Task Clean()
         {
             var cleaningCommand = _consoleParser.ParseAllSteps();
-            var uniqueVerticesCleaned = _robotCleaner.StartWithInput(cleaningCommand);
+            var uniqueVerticesCleaned = await _robotCleaner.StartWithInput(cleaningCommand);
             _consoleParser.DisplayResult(uniqueVerticesCleaned);
         }
     }
