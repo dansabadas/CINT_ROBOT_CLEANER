@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.dll
+*.pdb
+/RobotCleaningLogic/obj/Debug
+/RobotCleaningLogicUnitTests/obj
+/RobotExecuter/.vs/RobotExecuter/v15
+/RobotExecuter/bin/Debug
+/RobotExecuter/obj/Debug
+/.vs/RobotExecuter/v15
+/RobotExecuter.sln.DotSettings.user
