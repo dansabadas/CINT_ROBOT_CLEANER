@@ -8,7 +8,7 @@ namespace RobotCleaningLogicUnitTests
     public class ConsoleParserUnitTests
     {
         [TestMethod]
-        public void Invalid_HorizontalCoordinates_Fail()
+        public void ParseAllSteps_Success()
         {
             IStandardIOReaderWriter consoleMock = Substitute.For<IStandardIOReaderWriter>();
             consoleMock
