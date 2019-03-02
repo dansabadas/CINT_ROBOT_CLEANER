@@ -14,11 +14,20 @@ namespace RobotCleaningLogic
         private const char South = 'S';
         private const char North = 'N';
 
-        public void ParseAllSteps()
+        public CleaningInputCommand ParseAllSteps()
         {
             int numberOfCommands = ParseNumberOfCommands();
 
             Point2D startingCoordinate = ParseStartingCoordinates();
+
+            var navigationDirections = ParseNavigationDirections(numberOfCommands);
+
+            return new CleaningInputCommand(startingCoordinate, navigationDirections);
+        }
+
+        public void DisplayResult(uint places)
+        {
+            Console.WriteLine($"=> Cleaned: {places}");
         }
 
         /// <summary>
@@ -45,13 +54,42 @@ namespace RobotCleaningLogic
         /// If stops after the given the number of commands to be taken into account (provided at step 1)
         /// </summary>
         /// <param name="numberOfCommands"></param>
-        private void ParseNavigationDirections(int numberOfCommands)
+        private List<NavigationDirections> ParseNavigationDirections(int numberOfCommands)
         {
-            List<NavigationDirections> navigationDirections = new List<NavigationDirections>();
+            var navigationDirections = new List<NavigationDirections>();
             while (numberOfCommands > 0)
             {
                 string[] commandTokens = Console.ReadLine().Split();
+                int numberOfSteps = int.Parse(commandTokens[1]);
+                char direction = char.Parse(commandTokens[0]);
+                var navigationDirection = ConvertToNavigationDirection(direction);
+                
+                while (numberOfSteps > 0)
+                {
+                    navigationDirections.Add(navigationDirection);
+                    numberOfSteps -= 1;
+                }
+
                 numberOfCommands -= 1;
+            }
+
+            return navigationDirections;
+        }
+
+        private static NavigationDirections ConvertToNavigationDirection(char directionCharacter)
+        {
+            switch (directionCharacter)
+            {
+                case East:
+                    return NavigationDirections.East;
+                case West:
+                    return NavigationDirections.West;
+                case South:
+                    return NavigationDirections.South;
+                case North:
+                    return NavigationDirections.North;
+                default:
+                    throw new InvalidOperationException($"invalid direction input: {directionCharacter}");
             }
         }
     }
