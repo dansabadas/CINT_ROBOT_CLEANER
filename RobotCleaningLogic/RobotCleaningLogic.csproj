@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CleaningCommand.cs" />
+    <Compile Include="CleaningInputCommand.cs" />
+    <Compile Include="GridNavigator.cs" />
+    <Compile Include="IRobotCleaner.cs" />
+    <Compile Include="NavigationDirections.cs" />
+    <Compile Include="Orchestrator.cs" />
     <Compile Include="Point2D.cs" />
     <Compile Include="ConsoleParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
