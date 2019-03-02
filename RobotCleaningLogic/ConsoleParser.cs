@@ -14,6 +14,17 @@ namespace RobotCleaningLogic
         private const char South = 'S';
         private const char North = 'N';
 
+        private readonly IConsoleReaderWriter _consoleReaderWriter;
+
+        public ConsoleParser(IConsoleReaderWriter consoleReaderWriter)
+        {
+            _consoleReaderWriter = consoleReaderWriter;
+        }
+
+        public ConsoleParser() : this(new ConsoleReaderWriter())
+        {
+        }
+
         public CleaningInputCommand ParseAllSteps()
         {
             int numberOfCommands = ParseNumberOfCommands();
@@ -27,7 +38,7 @@ namespace RobotCleaningLogic
 
         public void DisplayResult(uint places)
         {
-            Console.WriteLine($"=> Cleaned: {places}");
+            _consoleReaderWriter.WriteLine($"=> Cleaned: {places}");
         }
 
         /// <summary>
@@ -36,7 +47,7 @@ namespace RobotCleaningLogic
         /// <returns></returns>
         private int ParseNumberOfCommands()
         {
-            int numberOfCommands = int.Parse(Console.ReadLine());
+            int numberOfCommands = int.Parse(_consoleReaderWriter.ReadLine());
             return numberOfCommands;
         }
 
@@ -46,7 +57,7 @@ namespace RobotCleaningLogic
         /// <returns></returns>
         private Point2D ParseStartingCoordinates()
         {
-            string[] commandTokens = Console.ReadLine().Split();
+            string[] commandTokens = _consoleReaderWriter.ReadLine().Split();
             return new Point2D(int.Parse(commandTokens[0]), int.Parse(commandTokens[0]));
         }
         /// <summary>
@@ -59,7 +70,7 @@ namespace RobotCleaningLogic
             var navigationDirections = new List<NavigationDirections>();
             while (numberOfCommands > 0)
             {
-                string[] commandTokens = Console.ReadLine().Split();
+                string[] commandTokens = _consoleReaderWriter.ReadLine().Split();
                 int numberOfSteps = int.Parse(commandTokens[1]);
                 char direction = char.Parse(commandTokens[0]);
                 var navigationDirection = ConvertToNavigationDirection(direction);

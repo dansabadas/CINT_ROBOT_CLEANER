@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CleaningInputCommand.cs" />
+    <Compile Include="ConsoleReaderWriter.cs" />
     <Compile Include="GridNavigator.cs" />
+    <Compile Include="IConsoleReaderWriter.cs" />
     <Compile Include="IRobotCleaner.cs" />
     <Compile Include="NavigationDirections.cs" />
     <Compile Include="Orchestrator.cs" />
