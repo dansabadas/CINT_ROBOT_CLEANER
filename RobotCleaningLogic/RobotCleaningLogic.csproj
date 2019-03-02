@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CleaningCommand.cs" />
+    <Compile Include="Point2D.cs" />
     <Compile Include="ConsoleParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RobotCleaner.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
