@@ -9,7 +9,7 @@ namespace RobotCleaningLogic
     /// </summary>
     public class RobotCleaner : IRobotCleaner
     {
-        private List<Point2D> _alreadyCleanedPoints;
+        private readonly List<Point2D> _alreadyCleanedPoints;
         private readonly GridNavigator _gridNavigator;
 
         public RobotCleaner() : this(new GridNavigator())
